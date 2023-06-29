@@ -24,6 +24,7 @@
 
             propagatedBuildInputs = with pythonPackages; [
               packaging
+              toml
             ];
           };
         };
