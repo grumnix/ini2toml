@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -15,12 +15,15 @@
 
           ini2toml = pythonPackages.buildPythonPackage rec {
             pname = "ini2toml";
-            version = "0.12";
+            version = "0.15";
 
             src = pythonPackages.fetchPypi {
               inherit pname version;
-              sha256 = "sha256-1FnVNYeOD7lc0LDDiJ8Fa3/zkD6C6RnTlOn4W3Fn9ew=";
+              sha256 = "sha256-1hkTmxuakqkqVs0vJKT7Mb8QobdcKWjY/o8O069dZM4=";
             };
+
+            pyproject = true;
+            build-system = [ pythonPackages.setuptools-scm ];
 
             propagatedBuildInputs = with pythonPackages; [
               packaging
